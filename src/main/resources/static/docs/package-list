@@ -1,0 +1,7 @@
+przemek.portfel
+przemek.portfel.Controllers.ExchangeRate
+przemek.portfel.Models.Exceptions
+przemek.portfel.Models.ExchangeRate
+przemek.portfel.Repositories.ExchangeRate
+przemek.portfel.Services.ExchangeRate
+przemek.portfel.Services.Other

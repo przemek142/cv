@@ -8,11 +8,11 @@ import przemek.portfel.Models.Exceptions.CurrencyGetURLException;
 import przemek.portfel.Services.ExchangeRate.ExchangeRateTools;
 import przemek.portfel.Models.ExchangeRate.SingleRate;
 import przemek.portfel.Repositories.ExchangeRate.ExchangeRateRepo;
-
-import java.io.IOException;
 import java.util.List;
 
-// for tests only
+/**
+ * for dev. purpose only
+ */
 @RequestMapping("/exchange")
 @RestController
 public class ExchangeRateController {

@@ -12,51 +12,88 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
+
+/**
+ * SingleRate.class is an entity for storing single exchange rate in DB
+ */
 @Entity
 @Getter
 @Setter
 @ToString
 public class SingleRate {
 
-    // SQL ID
+    /**
+     * SQL ID
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    // used table 'A'
+    /**
+     * used table e.g.: "A"
+     */
     private Character table;
-    // Currency name "frank szwajcarski"
+    /**
+     * Currency name e.g.: "frank szwajcarski"
+     */
     private String currency;
-    // currency code "CHF"
+    /**
+     * currency code e.g.: "CHF"
+     */
     private String code;
-    // data for currency rate (no, effectiveDate, mid)
-//    @OneToOne
-//    @JoinColumn(name = "id", referencedColumnName = "id")
-//            //(cascade = CascadeType.ALL, mappedBy="singleRate")
-    // number (id) of rate "001/A/NBP/2019"
+    /**
+     * number (id) of rate e.g.: "001/A/NBP/2019"
+     */
     private String no;
-    // date of exchange rate "2019-01-02"
+    /**
+     * date of exchange rate e.g.: "2019-01-02"
+     */
     private LocalDate effectiveDate;
-    // average exchange rate "3.8242"
-    @Digits(integer=4, fraction=4)
+    /**
+     * average exchange rate e.g.: "3.8242"
+     */
+    @Digits(integer = 4, fraction = 4)
     private BigDecimal mid;
 
+    /**
+     * getter effectiveDate
+     *
+     * @return LocalDate ref.:{@link #effectiveDate}
+     */
     public LocalDate getEffectiveDate() {
         return effectiveDate;
     }
 
+    /**
+     * setter effectiveDate for String value
+     *
+     * @param effectiveDate {@link #effectiveDate}
+     */
     public void setEffectiveDate(String effectiveDate) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         this.effectiveDate = LocalDate.parse(effectiveDate, formatter);
     }
 
+    /**
+     * setter effectiveDate
+     *
+     * @param effectiveDate {@link #effectiveDate}
+     */
     public void setEffectiveDate(LocalDate effectiveDate) {
         this.effectiveDate = effectiveDate;
     }
 
-    // no param constructor
+    /**
+     * no param. constructor
+     */
     public SingleRate() {
     }
 
+    /**
+     * equals without DB id
+     *
+     * @param o object to compare
+     * @return eqals
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -69,26 +106,13 @@ public class SingleRate {
                 Objects.equals(mid, that.mid);
     }
 
+    /**
+     * hashCode without DB id
+     *
+     * @return int hashCode
+     */
     @Override
     public int hashCode() {
         return Objects.hash(table, currency, code, effectiveDate, mid);
     }
-
-    /*
-    example json input:
-
-    {
-    "table":"A",
-    "currency":"frank szwajcarski",
-    "code":"CHF",
-    "rates":
-      [
-          {
-            "no":"001/A/NBP/2019",
-            "effectiveDate":"2019-01-02",
-            "mid":3.8242
-           }
-       ]
-     }
-     */
 }

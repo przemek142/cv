@@ -1,13 +1,11 @@
 package przemek.portfel.Services.ExchangeRate;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import przemek.portfel.Models.Exceptions.CurrencyGetURLException;
 import przemek.portfel.Models.ExchangeRate.JsonSingleRate;
 import przemek.portfel.Models.ExchangeRate.SingleRate;
 import przemek.portfel.Repositories.ExchangeRate.ExchangeRateRepo;
 
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -28,7 +26,7 @@ public class ExchangeRateTools {
     }
 
     public static JsonSingleRate getRate(LocalDate localDate, String currency, ObjectMapper objectMapper) throws IOException {
-        // http://api.nbp.pl/api/exchangerates/rates/a/chf/2016-04-02/?format=json
+        // e.g. http://api.nbp.pl/api/exchangerates/rates/a/chf/2016-04-02/?format=json
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
         String url =
@@ -67,5 +65,7 @@ public class ExchangeRateTools {
         }
         return exist;
     }
+
+
 
 }

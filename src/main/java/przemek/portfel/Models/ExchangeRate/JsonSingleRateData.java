@@ -4,15 +4,27 @@ import lombok.Data;
 
 import java.math.BigDecimal;
 
-@Data // getters, setters, etc.
+/**
+ * JsonSingleRateData.class ref.: {@link JsonSingleRate#rates}
+ */
+@Data
 public class JsonSingleRateData {
+    /**
+     * id, e.g.: "001/A/NBP/2018"
+     */
     private String no;
-    // date of exchange rate "2019-01-02"
+    /**
+     * date of exchange rate, e.g.: "2019-01-02"
+     */
     private String effectiveDate;
-    // average exchange rate "3.8242"
+    /**
+     * average exchange rate, e.g.: "3.8242"
+     */
     private BigDecimal mid;
 
-    // no param constructor
+    /**
+     * no param. constructor
+     */
     public JsonSingleRateData() {
     }
 }
