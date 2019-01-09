@@ -17,7 +17,7 @@ import java.util.List;
 public class ExchangeRateTools {
 
     /**
-     * JSON OBJECT (JsonSingleRate) -> OBJECT (SingleRate)
+     * JSON OBJECT (JsonSingleRate) to OBJECT (SingleRate)
      * @param jsonSingleRate output from object mapper, ref.: {@link #getRate(String, String, ObjectMapper)}, {@link #getRate(LocalDate, String, ObjectMapper)}, {@link #getRate(String, ObjectMapper)}
      * @return singleRate object
      */
@@ -38,7 +38,7 @@ public class ExchangeRateTools {
      * @param currency currency of exchange rate
      * @param objectMapper ObjectMapper instance
      * @return JsonSingleRate object
-     * @throws IOException
+     * @throws IOException throws exception if error occurs
      */
     public static JsonSingleRate getRate(LocalDate localDate, String currency, ObjectMapper objectMapper) throws IOException {
         // e.g. http://api.nbp.pl/api/exchangerates/rates/a/chf/2016-04-02/?format=json
@@ -58,7 +58,7 @@ public class ExchangeRateTools {
      * @param currency currency of exchange rate
      * @param objectMapper ObjectMapper instance
      * @return JsonSingleRate object
-     * @throws IOException
+     * @throws IOException throws exception if error occurs
      */
     public static JsonSingleRate getRate(String localDate, String currency, ObjectMapper objectMapper) throws IOException {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
@@ -70,7 +70,7 @@ public class ExchangeRateTools {
      * @param currency date for exchange rate
      * @param objectMapper currency of exchange rate
      * @return ObjectMapper instance
-     * @throws IOException
+     * @throws IOException throws exception if error occurs
      */
     public static JsonSingleRate getRate(String currency, ObjectMapper objectMapper) throws IOException {
         // http://api.nbp.pl/api/exchangerates/rates/a/chf/2016-04-02/?format=json
@@ -86,7 +86,7 @@ public class ExchangeRateTools {
      * Check if singleRate object exist in DB
      * @param singleRate input rate
      * @param exchangeRateRepo ExchangeRateRepo repository
-     * @return
+     * @return boolean
      */
     public static boolean exist(SingleRate singleRate, ExchangeRateRepo exchangeRateRepo) {
         List<SingleRate> list = exchangeRateRepo.findAll();
